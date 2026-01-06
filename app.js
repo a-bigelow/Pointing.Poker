@@ -47,6 +47,19 @@
             members = JSON.parse(val);
           }
           var memberCount = members.length;
+          
+          // First person to join the room becomes admin (check if no existing admin)
+          var hasAdmin = false;
+          for(var i=0; i < memberCount; i++){
+            if(members[i].isAdmin === true){
+              hasAdmin = true;
+              break;
+            }
+          }
+          if(!hasAdmin){
+            member.isAdmin = true;
+          }
+          
           for(var i=memberCount-1; i >= 0; i--){
             var mbr = members[i];
             if(mbr.name.toLowerCase() !== member.name.toLowerCase()){
@@ -126,6 +139,11 @@
 
       });
 
+    });
+
+    socket.on('showcards', function (data) {
+      var roomKey = data.roomKey.toLowerCase();
+      io.to(roomKey).emit('showcards', {});
     });
 
     socket.on('disconnect', function (n1, n2, n3) {

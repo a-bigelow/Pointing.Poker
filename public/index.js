@@ -1,7 +1,7 @@
 
 var PointingPoker = function () {
 
-  var _clientKey, _memberId, _roomKey,
+  var _clientKey, _memberId, _roomKey, _isAdmin = false,
     _gaID = 'UA-53681854-2';
 
   var socket = io();
@@ -40,6 +40,7 @@ var PointingPoker = function () {
 
     if (_clientKey === parseInt(member.clientKey, 10)) {
       _memberId = member.id;
+      _isAdmin = member.isAdmin || false;
       PointingPoker.hideForm(member.observer);
     }
 
@@ -272,7 +273,20 @@ var PointingPoker = function () {
       });
     },
 
+    showCards: function () {
+      var data = {
+        roomKey: _roomKey
+      };
+      socket.emit('showcards', data);
+      ga('send', 'event', {
+        eventCategory: 'GameActions',
+        eventAction: 'showcards-manual',
+        eventLabel: _roomKey
+      });
+    },
+
     showForm: function () {
+      document.getElementById("viewVotesContainer").style.display = "none";
       document.getElementById("newGameContainer").style.display = "none";
       document.getElementById("linkExit").style.display = "none";
       document.getElementById("linkMenu").style.display = "none";
@@ -286,7 +300,8 @@ var PointingPoker = function () {
     },
 
     hideForm: function (observer) {
-      document.getElementById("newGameContainer").style.display = observer ? "none" : "block";
+      document.getElementById("viewVotesContainer").style.display = (observer || !_isAdmin) ? "none" : "block";
+      document.getElementById("newGameContainer").style.display = (observer || !_isAdmin) ? "none" : "block";
       document.getElementById("pointPickerContainer").style.display = observer ? "none" : "block";
       document.getElementById("linkExit").style.display = "";
       document.getElementById("linkMenu").style.display = "";

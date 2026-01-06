@@ -8,6 +8,7 @@ function Member(_req){
     vote: "",
     clientKey: 0,
     roomKey: "",
+    isAdmin: false,
     timestamp: new Date()
   };
 

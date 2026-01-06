@@ -6,6 +6,10 @@ div#newGameContainer{
   margin-top:20px;
 }
 
+div#viewVotesContainer{
+  margin-top:20px;
+}
+
 .marginBottom20{
   margin-bottom: 20px;
 }
