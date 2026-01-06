@@ -2,7 +2,7 @@
  * Globals
  */
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -107,12 +107,12 @@ span.member-tag {
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-.label-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+span.member-tag.label-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.label-default {
-  background: linear-gradient(135deg, #606c88 0%, #3f4c6b 100%) !important;
+span.member-tag.label-default {
+  background: linear-gradient(135deg, #606c88 0%, #3f4c6b 100%);
 }
 
 div#velocityEntryContainer{
@@ -268,6 +268,7 @@ body {
   font-size: 16px;
   padding: 12px 16px;
   transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
