@@ -300,9 +300,8 @@ var PointingPoker = function () {
     },
 
     hideForm: function (observer) {
-      var isAdmin = _isAdmin;
-      document.getElementById("viewVotesContainer").style.display = (observer || !isAdmin) ? "none" : "block";
-      document.getElementById("newGameContainer").style.display = (observer || !isAdmin) ? "none" : "block";
+      document.getElementById("viewVotesContainer").style.display = (observer || !_isAdmin) ? "none" : "block";
+      document.getElementById("newGameContainer").style.display = (observer || !_isAdmin) ? "none" : "block";
       document.getElementById("pointPickerContainer").style.display = observer ? "none" : "block";
       document.getElementById("linkExit").style.display = "";
       document.getElementById("linkMenu").style.display = "";

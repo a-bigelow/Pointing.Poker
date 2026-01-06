@@ -48,8 +48,15 @@
           }
           var memberCount = members.length;
           
-          // First person to join the room becomes admin
-          if(memberCount === 0){
+          // First person to join the room becomes admin (check if no existing admin)
+          var hasAdmin = false;
+          for(var i=0; i < memberCount; i++){
+            if(members[i].isAdmin === true){
+              hasAdmin = true;
+              break;
+            }
+          }
+          if(!hasAdmin){
             member.isAdmin = true;
           }
           
