@@ -1,5 +1,5 @@
 /*
- * Globals - Facebook-style modernization
+ * Global Styles - Facebook-style modernization
  */
 
 div#newGameContainer{
@@ -80,6 +80,10 @@ div#pointPickerContainer div.selected{
   border-color: #1877f2;
 }
 
+div#pointPickerContainer div.selected:hover{
+  background-color: #166fe5;
+}
+
 div#memberContainer span.ticked{
   background-image: url("images/tick.png");
   background-repeat: no-repeat;
@@ -118,7 +122,6 @@ a:hover {
 
 /* Custom default button - Facebook style */
 .btn-default,
-.btn-default:hover,
 .btn-default:focus {
   color: #ffffff;
   text-shadow: none;
@@ -139,6 +142,14 @@ a:hover {
 
 .btn-default:active {
   background-color: #1464d6;
+}
+
+.btn-default:disabled,
+.btn-default.disabled {
+  background-color: #e4e6eb;
+  color: #bcc0c4;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 /*
@@ -169,7 +180,7 @@ body {
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
-  padding-top: 80px;
+  padding-top: 70px;
 }
 .cover-container {
   margin-right: auto;
@@ -298,7 +309,8 @@ body {
   border-color: #1877f2;
   background-color: #ffffff;
   box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
-  outline: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .form-group {
@@ -307,8 +319,8 @@ body {
 
 /* Member badges */
 .label-primary {
-  background-color: #e7f3ff;
-  color: #1877f2;
+  background-color: #d9e9ff;
+  color: #0a5fcc;
   border: 1px solid #1877f2;
 }
 
@@ -353,7 +365,6 @@ body {
   /* Start the vertical centering */
   .site-wrapper-inner {
     vertical-align: middle;
-    padding-top: 80px;
   }
   /* Handle the widths */
   .masthead,
